@@ -1,72 +1,33 @@
 #include <iostream>
-#include <cstring>
-#include <cstdlib>
+#include <string>
 using namespace std;
 
 class Norml {
-    char *s;
+    string s;
 
 public:
-
-    Norml() : s(0) {}
-
-
-    Norml(const Norml &other) {
-        s = 0;
-        if (other.s) {
-            s = (char *) malloc(strlen(other.s) + 1);
-            strcpy(s, other.s);
-        }
-    }
+    void set(string str) {
+    s = move(str);  
+}
 
 
-    Norml& operator=(const Norml &other) {
-
-        if (this == &other) return *this;
-        if (s) free(s);
-        s = 0;
-        if (other.s) {
-
-            s = (char *) malloc(strlen(other.s) + 1);
-            strcpy(s, other.s);
-        }
-
-        return *this;
-    }
-
-
-    ~Norml() {
-        if (s) free(s);
-        cout << "Freeing s\n";
-    }
-
-
-    void set(const char *str) {
-        if (s) free(s);
-        s = (char *) malloc(strlen(str) + 1);
-        strcpy(s, str);
-    }
-
-  void show() {
+    void show() const {
         cout << s << "\n";
     }
 };
 
-
 Norml input() {
-    char str[80];
+    string str;
     Norml obj;
     cout << "Enter a string: ";
-    cin.getline(str, 80);
+    getline(cin, str);
     obj.set(str);
     return obj;
 }
 
 int main() {
     Norml ob;
-
     ob = input();
     ob.show();
-
     return 0;
 }
