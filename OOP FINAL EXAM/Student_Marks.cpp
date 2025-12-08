@@ -1,24 +1,38 @@
 #include<iostream>
 using namespace std;
 
-int main(){
-    int marks[2];
+class Student {
+private:
+    int marks[3]; 
 
-    try{
-        cout<<"Enter marks of subjects:"<<endl;
+public:
     
-    for(int i=0 ; i<3 ;i++){
-       cin>>marks[i];
+    void inputMarks() {
+        cout << "Enter marks of 3 subjects:" << endl;
+        
+        for(int i = 0; i < 3; i++) {
+            cin >> marks[i];
 
-       if(marks[i]<0 || marks[i]>100){
-            throw "invalid marks";
-
-       }
-}
-     cout<<"Marks Entered Successfully"<<endl;
-}
-    catch(const char* error){
-        cout<<"Error: "<<error<<endl;
+            
+            if(marks[i] < 0 || marks[i] > 100) {
+                throw "Invalid marks!";
+            }
+        }
+        cout << "Marks Entered Successfully" << endl;
     }
+};
+
+int main() {
+    
+    Student s1;
+
+    try {
+       
+        s1.inputMarks();
+    }
+    catch(const char* error) {
+        cout << "Error: " << error << endl;
+    }
+
     return 0;
 }
