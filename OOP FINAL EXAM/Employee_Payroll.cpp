@@ -70,10 +70,10 @@ public:
         cout << "Shift: " << this->shift << endl;
         cout << "Basic Salary: " << this->basicSalary << endl;
         
-        cout << "Total Salary: " << calculateSalary() << endl;
+        cout << "Total Salary(After 10% Bonus):" << calculateSalary() << endl;
         
         if (this->shift == "Night" || this->shift == "night") {
-            cout << "(Includes 10% Night Shift Bonus)" << endl;
+            cout << "You have received 10% Night Shift Bonus" << endl;
         }
     }
     ~Payroll() {}
